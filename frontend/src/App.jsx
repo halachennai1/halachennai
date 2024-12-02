@@ -19,6 +19,7 @@ import PurchaseCancelPage from "./pages/PurchaseCancelPage";
 import Footer from "./components/Footer";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import SearchPage from "./pages/SearchPage";
+import LegalTermsPage from "./pages/LegalTermsPage";
 
 function App() {
 	const { user, checkAuth, checkingAuth } = useUserStore();
@@ -63,6 +64,8 @@ function App() {
 					/>
 					<Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} />
 					<Route path='product/search/:productName' element={<SearchPage />} />
+					<Route path='/legal' element={<LegalTermsPage />} />
+
 				</Routes>
 				<DeliveryNote />
 				<Footer />
