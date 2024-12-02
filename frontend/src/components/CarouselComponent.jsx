@@ -31,7 +31,7 @@ const CarouselComponent = () => {
         {/* Slide 1 */}
         <div>
           <img
-            src="bags.jpg"
+            src="messi cropped1.jpg"
             alt="Slide 1"
             className="w-full h-[900px] object-cover" // Set fixed height for all images
           />
@@ -40,7 +40,7 @@ const CarouselComponent = () => {
         {/* Slide 2 */}
         <div>
           <img
-            src="glasses.png"
+            src="neymar.jpg"
             alt="Slide 2"
             className="w-full h-[900px] object-cover" // Set fixed height for all images
           />
@@ -48,7 +48,7 @@ const CarouselComponent = () => {
         {/* Slide 3 */}
         <div>
           <img
-            src="jackets.jpg"
+            src="ronald.jpg"
             alt="Slide 3"
             className="w-full h-[900px] object-cover" // Set fixed height for all images
           />
@@ -56,7 +56,7 @@ const CarouselComponent = () => {
         {/* Slide 4 */}
         <div>
           <img
-            src="tshirts.jpg"
+            src="neymar.jpg"
             alt="Slide 4"
             className="w-full h-[900px] object-cover" // Set fixed height for all images
           />
