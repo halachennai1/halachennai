@@ -12,7 +12,7 @@ const CarouselComponent = () => {
     slidesToShow: 1, // Number of slides to show at once
     slidesToScroll: 1, // Number of slides to scroll at once
     autoplay: true, // Enable auto play
-    autoplaySpeed: 3000, // Time between auto play in ms
+    autoplaySpeed: 30000, // Time between auto play in ms
     nextArrow: (
       <button className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
         &#8594; {/* Right arrow symbol */}
@@ -33,7 +33,7 @@ const CarouselComponent = () => {
           <img
             src="messi cropped1.jpg"
             alt="Slide 1"
-            className="w-full h-[900px] object-cover" // Set fixed height for all images
+            className="w-full aspect-[16/9] object-cover" // Set fixed height for all images
           />
         </div>
         
@@ -42,7 +42,7 @@ const CarouselComponent = () => {
           <img
             src="neymar.jpg"
             alt="Slide 2"
-            className="w-full h-[900px] object-cover" // Set fixed height for all images
+            className="w-full aspect-[16/9] object-cover" // Set fixed height for all images
           />
         </div>
         {/* Slide 3 */}
@@ -50,7 +50,7 @@ const CarouselComponent = () => {
           <img
             src="ronald.jpg"
             alt="Slide 3"
-            className="w-full h-[900px] object-cover" // Set fixed height for all images
+            className="w-full aspect-[16/9] object-cover" // Set fixed height for all images
           />
         </div>
         {/* Slide 4 */}
@@ -58,7 +58,7 @@ const CarouselComponent = () => {
           <img
             src="neymar.jpg"
             alt="Slide 4"
-            className="w-full h-[900px] object-cover" // Set fixed height for all images
+            className="w-full aspect-[16/9] object-cover" // Set fixed height for all images
           />
         </div>
       </Slider>
