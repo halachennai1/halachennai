@@ -12,7 +12,7 @@ const CarouselComponent = () => {
     slidesToShow: 1, // Number of slides to show at once
     slidesToScroll: 1, // Number of slides to scroll at once
     autoplay: true, // Enable auto play
-    autoplaySpeed: 30000, // Time between auto play in ms
+    autoplaySpeed: 3000, // Time between auto play in ms
     nextArrow: (
       <button className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
         &#8594; {/* Right arrow symbol */}
