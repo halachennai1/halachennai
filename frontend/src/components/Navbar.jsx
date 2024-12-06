@@ -943,20 +943,38 @@ const Navbar = () => {
         {/* Mobile Toggle Button */}
         <button
           onClick={handleToggleMenu}
-          className="lg:hidden text-white p-2 focus:outline-none"
+          className="lg:hidden text-white p-1 focus:outline-none"
         >
           <Menu size={24} />
         </button>
+		<Link
+              to="/cart"
+              className="relative group text-gray-300 hover:text-emerald-400 pl-2 py-2 px-21 rounded-md flex items-center transition duration-300 ease-in-out"
+            >
+              <ShoppingCart className="inline-block mr-1 group-hover:text-emerald-400" size={21} />
+              <span className="hidden sm:inline">Cart</span>
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -left-2 bg-emerald-500 text-white rounded-full px-2 py-0.5 text-xs group-hover:bg-emerald-400 transition duration-300 ease-in-out">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
 
         {/* Centered Logo */}
         <Link
           to="/"
-          className="text-2xl font-bold text-emerald-400 flex items-center justify-center flex-grow"
+          className="text-xsl font-bold text-emerald-400 flex items-center justify-center flex-grow"
           style={{ fontFamily: "DraftWerk, sans-serif" }}
         >
           H A L A - C H E N N A I
         </Link>
-
+		<Link
+                to="/login"
+                className="  text-white py-2 px-21 rounded-md flex items-center transition duration-300 ease-in-out"
+              >
+                <UserPlus className="mr-2" size={20} />
+                {/* Sign Up */}
+              </Link>
         {/* Mobile Search Icon */}
         <button
           onClick={handleSearchToggle}
@@ -1106,20 +1124,20 @@ const Navbar = () => {
         >
           <Search size={24} />
         </button>
-              <Link
+              {/* <Link
                 to="/signup"
                 className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out"
               >
                 <UserPlus className="mr-2" size={18} />
                 Sign Up
-              </Link>
-              <Link
+              </Link> */}
+              {/* <Link
                 to="/login"
                 className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out"
               >
                 <LogIn className="mr-2" size={18} />
                 Login
-              </Link>
+              </Link> */}
             </div>
           )}
         </div>
