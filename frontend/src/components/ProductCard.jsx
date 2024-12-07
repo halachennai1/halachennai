@@ -17,9 +17,10 @@ const ProductCard = ({ product }) => {
     const [selectedColor, setSelectedColor] = useState("");
 	const [customization, setCustomization] = useState("");
     const [selectedImage, setSelectedImage] = useState(product.image);
+    const allImages = [product.image, ...(product.images || [])];
     const settings = {
-        dots: true,  // Show navigation dots
-        infinite: true,  // Infinite loop
+        dots: allImages.length > 1, // Show dots only if there are multiple images
+        infinite: allImages.length > 1,
         speed: 500,  // Transition speed
         slidesToShow: 1,  // Show one image at a time
         slidesToScroll: 1,  // Scroll one image at a time
@@ -27,10 +28,10 @@ const ProductCard = ({ product }) => {
     };
 
 	// Array of all images (main + additional images)
-	const allImages = [product.image, ...(product.images || [])];
 
     const handleAddToCart = () => {
         if (!user) {
+            console.log(allImages);
             toast.error("Please login to add products to cart", { id: "login" });
             return;
         }
@@ -100,8 +101,8 @@ const ProductCard = ({ product }) => {
                                     {allImages.map((image, index) => (
                                         <div key={index} onClick={() => setSelectedImage(image)}>
                                             <InnerImageZoom
-                                                src={image}
-                                                zoomSrc={image}
+                                                src={selectedImage}
+                                                zoomSrc={selectedImage}
                                                 zoomType="click"
                                                 zoomScale={1}
                                                 className="rounded-lg mb-4"

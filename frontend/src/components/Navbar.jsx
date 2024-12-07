@@ -1407,7 +1407,7 @@ const Navbar = () => {
   const handleSearchToggle = () => setIsSearchOpen(!isSearchOpen);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800">
+    <header className="top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800">
       <div className="container mx-auto px-4 py-5 flex justify-between items-center">
         {/* Mobile Toggle Button */}
         <button
@@ -1495,7 +1495,7 @@ const Navbar = () => {
                       to={`/category/${category.name.toLowerCase()}`}
                       className="block px-4 py-2 text-gray-300 hover:bg-emerald-400 hover:text-gray-900 transition duration-300"
                     >
-                      {category.name}
+                      {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
                     </Link>
                   ))
                 ) : (
@@ -1620,7 +1620,7 @@ const Navbar = () => {
             </button>
           ) : (
             <div className="flex space-x-4">
-              {/* <Link
+              <Link
                 to="/signup"
                 className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out"
               >
@@ -1633,7 +1633,7 @@ const Navbar = () => {
               >
                 <LogIn className="mr-2" size={18} />
                 Login
-              </Link> */}
+              </Link>
             </div>
           )}
         </div>

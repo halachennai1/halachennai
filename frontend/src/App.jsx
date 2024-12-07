@@ -45,8 +45,8 @@ function App() {
 				</div>
 			</div>
 
-			<div className='relative z-50 pt-20'>
 				<Navbar />
+			<div className='relative z-50'>
 				<Routes>
 					<Route path='/' element={<HomePage />} />
 					<Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />
