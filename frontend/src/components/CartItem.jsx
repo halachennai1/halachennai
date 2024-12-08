@@ -48,7 +48,7 @@ const CartItem = ({ item }) => {
 
 					{/* Product Price */}
 					<div className='text-end md:order-4 md:w-32'>
-						<p className='text-base font-bold text-emerald-400'>${item.price}</p>
+						<p className='text-base font-bold text-emerald-400'>₹{item.price}</p>
 					</div>
 				</div>
 

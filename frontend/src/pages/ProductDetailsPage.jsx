@@ -32,7 +32,7 @@ const ProductDetailsPage = () => {
 
 			{/* Price */}
 			<h3 className='text-xl font-semibold'>Price</h3>
-			<p className='mb-4'>${product.price.toFixed(2)}</p>
+			<p className='mb-4'>₹{product.price.toFixed(2)}</p>
 
 			{/* Category */}
 			<h3 className='text-xl font-semibold'>Category</h3>

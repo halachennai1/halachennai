@@ -6,12 +6,12 @@ import CarouselComponent from "../components/CarouselComponent";
 
 const categories = [
 	// { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
-	{ href: "/player%20", name: "Player version", imageUrl: "/player version.jpg" },
-	{ href: "/%E2%81%A0%E2%81%A0fan%20version", name: "Fan version", imageUrl: "/fan version.jpg" },
-	{ href: "/%E2%81%A0%E2%81%A0retros", name: "Retro", imageUrl: "/retro.webp" },
-	{ href: "/jackets", name: "FC Set", imageUrl: "/fcset.webp" },
-	{ href: "/fc%20sets", name: "Kids", imageUrl: "/kids.webp" },
-	{ href: "/special%20editions", name: "Special Edition", imageUrl: "/special edition.webp" },
+	{ href: "/player version", name: "Player version", imageUrl: "/player version.jpg" },
+	{ href: "/fan version", name: "Fan version", imageUrl: "/fan version.jpg" },
+	{ href: "/retros", name: "Retro", imageUrl: "/retro.webp" },
+	{ href: "/fc sets", name: "FC Set", imageUrl: "/fcset.webp" },
+	{ href: "/kids", name: "Kids", imageUrl: "/kids.webp" },
+	{ href: "/special editions", name: "Special Edition", imageUrl: "/special edition.webp" },
 ];
 
 const HomePage = () => {
@@ -25,9 +25,12 @@ const HomePage = () => {
 		<div className='relative min-h-screen text-white overflow-hidden'>
 				<CarouselComponent/>
 			<div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
-				<h1 className='text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4'>
-					Explore Our Categories
-				</h1>
+			<h1
+		className='text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4'
+		style={{ fontFamily: "'Bungee', cursive" }}
+	>
+		Explore Our Categories
+	</h1>
 				<p className='text-center text-xl text-black mb-12'>
 					Discover the latest trends in eco-friendly fashion
 				</p>

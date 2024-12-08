@@ -42,7 +42,7 @@ const CategoryPage = () => {
 
 					{products?.map((product) => (
 					// 	<Link 
-					// 	to={`/product/${product._id}`} 
+					// 	to={`/product/₹{product._id}`} 
 					// 	key={product._id}
 					// 	className="block hover:shadow-lg transition duration-300"
 					// >

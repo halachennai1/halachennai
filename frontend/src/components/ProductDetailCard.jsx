@@ -299,7 +299,7 @@ const ProductCard = ({ product }) => {
                             alt={product.name}
                             className="w-full h-40 object-cover rounded-lg mb-4"
                         />
-                        <p className="text-gray-700 text-lg mb-4">Price: ${product.price}</p>
+                        <p className="text-gray-700 text-lg mb-4">Price: ₹{product.price}</p>
 
                         {/* Size Selection */}
                         <div className="mb-4">

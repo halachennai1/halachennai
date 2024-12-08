@@ -45,7 +45,7 @@ function App() {
 				</div>
 			</div>
 
-				<Navbar />
+					
 			<div className='relative z-50'>
 			<Navbar />
 				<Routes>

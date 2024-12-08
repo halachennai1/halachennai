@@ -1407,8 +1407,8 @@ const Navbar = () => {
   const handleSearchToggle = () => setIsSearchOpen(!isSearchOpen);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-40 transition-all duration-300 border-b border-emerald-800">
-      <div className="container mx-auto px-4 py-5 flex justify-between items-center">
+    <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-20  transition-all duration-300 border-b border-emerald-800">
+      <div className="lg:hidden container mx-auto h-12 px-4 py-5 flex justify-between items-center">
         {/* Mobile Toggle Button */}
         <button
           onClick={handleToggleMenu}
@@ -1431,12 +1431,15 @@ const Navbar = () => {
 
         {/* Centered Logo */}
 		<Link
-          to="/"
-          className="lg:hidden text-xl font-bold text-emerald-400 flex items-center justify-center flex-grow"
-          style={{ fontFamily: "DraftWerk, sans-serif" }}
-        >
-          H A L A - C H E N N A I
-        </Link>
+  to="/"
+  className="lg:hidden text-xl font-semibold text-emerald-500 flex items-center justify-center flex-grow"
+  style={{ fontFamily: "Roboto Slab, serif", letterSpacing: "0.5px" }}
+>
+  Hala Chennai
+</Link>
+
+
+
 		<Link
                 to="/login"
                 className="lg:hidden  text-white py-2 px-21 rounded-md flex items-center transition duration-300 ease-in-out"
@@ -1506,12 +1509,13 @@ const Navbar = () => {
           </div>
         </div>
 		<Link
-          to="/"
-          className="lg:text-3xl text-xl font-bold text-emerald-400 flex items-center justify-center flex-grow"
-          style={{ fontFamily: "DraftWerk, sans-serif" }}
-        >
-          H A L A - C H E N N A I
-        </Link>
+  to="/"
+  className="hidden lg:flex lg:text-4xl font-semibold text-emerald-500 flex items-center justify-center flex-grow"
+  style={{ fontFamily: "Roboto Slab, serif", letterSpacing: "0.5px" }}
+>
+  Hala Chennai
+</Link>
+
         {/* Desktop Search Bar */}
         {/* <div className="hidden lg:flex items-center gap-2">
           {isSearchOpen && (

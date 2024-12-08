@@ -219,7 +219,7 @@ const OrdersStatus = () => {
                                 ) : null}
 
                                 <p><strong>Quantity:</strong> {product.quantity}</p>
-                                <p><strong>Price:</strong> ${product.price}</p>
+                                <p><strong>Price:</strong> ₹{product.price}</p>
                             </div>
                         </div>
                     </div>

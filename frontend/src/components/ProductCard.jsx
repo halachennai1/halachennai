@@ -70,7 +70,7 @@ const ProductCard = ({ product }) => {
                 <h5 className="text-xl font-semibold tracking-tight text-black">{product.name}</h5>
                 <div className="mt-2 mb-5 flex items-center justify-between">
                     <p>
-                        <span className="text-3xl font-bold text-emerald-400">${product.price}</span>
+                        <span className="text-3xl font-bold text-emerald-400">₹{product.price}</span>
                     </p>
                 </div>
                 <button
@@ -130,7 +130,7 @@ const ProductCard = ({ product }) => {
                             <div className="flex-1">
                                 <h3 className="text-lg font-bold text-gray-800 mb-2">{product.name}</h3>
                                 <p className="text-gray-600 mb-4">{product.description}</p>
-                                <p className="text-gray-700 text-lg mb-4">Price: ${product.price}</p>
+                                <p className="text-gray-700 text-lg mb-4">Price: ₹{product.price}</p>
 
                                 {/* Size Selection */}
                                 <div className="mb-4">
