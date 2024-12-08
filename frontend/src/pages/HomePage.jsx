@@ -6,12 +6,12 @@ import CarouselComponent from "../components/CarouselComponent";
 
 const categories = [
 	// { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
-	{ href: "/t-shirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },
-	{ href: "/shoes", name: "Shoes", imageUrl: "/shoes.jpg" },
-	// { href: "/glasses", name: "Glasses", imageUrl: "/glasses.png" },
-	// { href: "/jackets", name: "Jackets", imageUrl: "/jackets.jpg" },
-	// { href: "/suits", name: "Suits", imageUrl: "/suits.jpg" },
-	// { href: "/bags", name: "Bags", imageUrl: "/bags.jpg" },
+	{ href: "/player%20", name: "Player version", imageUrl: "/player version.jpg" },
+	{ href: "/%E2%81%A0%E2%81%A0fan%20version", name: "Fan version", imageUrl: "/fan version.jpg" },
+	{ href: "/%E2%81%A0%E2%81%A0retros", name: "Retro", imageUrl: "/retro.webp" },
+	{ href: "/jackets", name: "FC Set", imageUrl: "/fcset.webp" },
+	{ href: "/fc%20sets", name: "Kids", imageUrl: "/kids.webp" },
+	{ href: "/special%20editions", name: "Special Edition", imageUrl: "/special edition.webp" },
 ];
 
 const HomePage = () => {

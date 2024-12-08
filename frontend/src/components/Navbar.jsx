@@ -1432,7 +1432,7 @@ const Navbar = () => {
         {/* Centered Logo */}
 		<Link
           to="/"
-          className="lg:text-2xl text-xl font-bold text-emerald-400 flex items-center justify-center flex-grow"
+          className="lg:hidden text-xl font-bold text-emerald-400 flex items-center justify-center flex-grow"
           style={{ fontFamily: "DraftWerk, sans-serif" }}
         >
           H A L A - C H E N N A I
@@ -1463,7 +1463,7 @@ const Navbar = () => {
 
       {/* Navbar Links (Mobile and Desktop) */}
       <nav
-        className={`lg:flex lg:justify-between lg:items-center ${isMenuOpen ? "block" : "hidden"} bg-gray-900 lg:bg-transparent px-6 py-4 lg:py-0`}
+        className={`lg:flex lg:justify-between lg:items-center ${isMenuOpen ? "block" : "hidden"} bg-gray-900 lg:bg-transparent px-6 py-4 lg:py-3`}
       >
         <div className="lg:flex lg:space-x-8 space-y-4 lg:space-y-0">
           {/* Home Link */}
@@ -1505,7 +1505,13 @@ const Navbar = () => {
             )}
           </div>
         </div>
-
+		<Link
+          to="/"
+          className="lg:text-3xl text-xl font-bold text-emerald-400 flex items-center justify-center flex-grow"
+          style={{ fontFamily: "DraftWerk, sans-serif" }}
+        >
+          H A L A - C H E N N A I
+        </Link>
         {/* Desktop Search Bar */}
         {/* <div className="hidden lg:flex items-center gap-2">
           {isSearchOpen && (
