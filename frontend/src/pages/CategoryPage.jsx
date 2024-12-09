@@ -185,7 +185,7 @@ const CategoryPage = () => {
   transition={{ duration: 0.8 }}
 >
   <div className="w-full h-full bg-black" />
-  <h1 className="text-center text-4xl sm:text-5xl font-bold text-emerald-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+  <h1 className="text-center lg:text-5xl sm:text-2xl font-bold text-emerald-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
     {category.charAt(0).toUpperCase() + category.slice(1)}
   </h1>
 

@@ -8,7 +8,7 @@ function ScrollingBanner({ onClose }) {
 
   return (
     <div className="w-full bg-black text-white text-center py-2 fixed top-0 z-50">
-      <div className="flex justify-between max-w-full mx-auto px-4">
+      <div className="flex justify-between text max-w-full mx-auto px-4">
         <div className="flex-grow">
           <marquee className="text-m">
             Customized orders require an additional 5 - 6 days for processing. We appreciate your patience and encourage you to plan your orders accordingly. Thank you for choosing us!

@@ -103,7 +103,7 @@ const ProductCard = ({ product }) => {
                                             <InnerImageZoom
                                                 src={selectedImage}
                                                 zoomSrc={selectedImage}
-                                                zoomType="click"
+                                                zoomType="click"    
                                                 zoomScale={1}
                                                 className="rounded-lg mb-4"
                                                 alt={product.name}
@@ -180,7 +180,7 @@ const ProductCard = ({ product }) => {
                                         className="text-black w-full px-4 py-2 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
                                         placeholder="Enter customization details (e.g., initials, text)"
                                         value={customization}
-                                        onChange={(e) => setCustomization(e.target.value)}
+                                        onChange ={(e) => setCustomization(e.target.value)}
                                     />
                                 </div>
 

@@ -73,6 +73,7 @@ function App() {
                         <Route path="/purchase-cancel" element={user ? <PurchaseCancelPage /> : <Navigate to="/login" />} />
                         <Route path="product/search/:productName" element={<SearchPage />} />
                         <Route path="/legal" element={<LegalTermsPage />} />
+                        
                     </Routes>
                 </div>
 
