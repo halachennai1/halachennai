@@ -135,6 +135,8 @@ import { useProductStore } from "../stores/useProductStore";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard";
+import 'https://fonts.googleapis.com/css2?family=Brevis&display=swap';
+
 
 const CategoryPage = () => {
   const { fetchProductsByCategory, products } = useProductStore();
@@ -188,10 +190,13 @@ const CategoryPage = () => {
     {category.charAt(0).toUpperCase() + category.slice(1)}
   </h1>
 
-  <div className="absolute text-2xl bottom-4 left-1/2 transform -translate-x-1/2 text-gray-600 mb-4">
-    <Link to="/" className="hover:text-black">Home</Link> &gt;
-    <span className="text-gray-400"> {category.charAt(0).toUpperCase() + category.slice(1)}</span>
-  </div>
+  <div 
+  className="absolute text-x bottom-4 left-1/2 transform -translate-x-1/2 text-gray-600 mb-4" 
+  style={{ fontFamily: 'Brevis, sans-serif' }} // This will apply the font to the text inside
+>
+  <Link to="/" className="hover:text-black">Home</Link> &gt;
+  <span className="text-gray-400"> {category.charAt(0).toUpperCase() + category.slice(1)}</span>
+</div>
 </motion.div>
 
         {/* Product Grid */}
