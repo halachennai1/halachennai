@@ -1381,12 +1381,13 @@
 
 
 
-import { ShoppingCart, UserPlus, LogIn, LogOut, Lock, Menu, X, Search } from "lucide-react";
+import { ShoppingCart, UserPlus, LogIn, LogOut, Lock, Menu, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
 import { useState, useEffect } from "react";
 import { useCategoryStore } from "../stores/useCategoryStore";
+import ScrollingBanner from './ScrollingBanner';  // Import the banner component
 
 const Navbar = () => {
   const { user, logout } = useUserStore();
@@ -1395,9 +1396,10 @@ const Navbar = () => {
   const { categories, fetchAllCategory } = useCategoryStore();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu toggle state
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Toggle search input (mobile)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [productName, setProductName] = useState("");
+  const [navbarTop, setNavbarTop] = useState("top-10"); // Default navbar top offset
 
   useEffect(() => {
     fetchAllCategory();
@@ -1406,10 +1408,18 @@ const Navbar = () => {
   const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const handleSearchToggle = () => setIsSearchOpen(!isSearchOpen);
 
+  const handleBannerClose = () => {
+    setNavbarTop("top-0"); // Adjust navbar position to 0 when banner is closed
+  };
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-20  transition-all duration-300 border-b border-emerald-800">
-      <div className="lg:hidden container mx-auto h-12 px-4 py-5 flex justify-between items-center">
+    <div>
+      <ScrollingBanner onClose={handleBannerClose} /> {/* Pass the close handler */}
+      
+      <header className={`fixed ${navbarTop} left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md shadow-lg z-20 transition-all duration-300 border-b border-emerald-800`}>
+        <div className="lg:hidden container mx-auto h-12 px-4 py-5 flex justify-between items-center">
         {/* Mobile Toggle Button */}
+		
         <button
           onClick={handleToggleMenu}
           className="lg:hidden text-white p-1 focus:outline-none"
@@ -1484,7 +1494,7 @@ const Navbar = () => {
             onMouseLeave={() => !isMenuOpen && setIsDropdownOpen(false)}
           >
             <button
-              onClick={() => isMenuOpen && setIsDropdownOpen(!isDropdownOpen)}
+              onClick={() => isaMenuOpen && setIsDropdownOpen(!isDropdownOpen)}
               className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
             >
               Category
@@ -1674,6 +1684,7 @@ const Navbar = () => {
         </div>
       )}
     </header>
+	</div>
   );
 };
 
