@@ -23,6 +23,8 @@ import LegalTermsPage from "./pages/LegalTermsPage";
 
 import BottomNav from "./components/BottomNav";
 import ScrollingBanner from "./components/ScrollingBanner";
+import ProfilePage from "./pages/ProfilePage";
+import AllCategoriesPage from "./pages/AllCategoriesPage";
 
 function App() {
     const { user, checkAuth, checkingAuth } = useUserStore();
@@ -73,7 +75,8 @@ function App() {
                         <Route path="/purchase-cancel" element={user ? <PurchaseCancelPage /> : <Navigate to="/login" />} />
                         <Route path="product/search/:productName" element={<SearchPage />} />
                         <Route path="/legal" element={<LegalTermsPage />} />
-                        
+                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/categories" element={<AllCategoriesPage />} />
                     </Routes>
                 </div>
 

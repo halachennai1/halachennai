@@ -1494,7 +1494,7 @@ const Navbar = () => {
             onMouseLeave={() => !isMenuOpen && setIsDropdownOpen(false)}
           >
             <button
-              onClick={() => isaMenuOpen && setIsDropdownOpen(!isDropdownOpen)}
+              onClick={() => isMenuOpen && setIsDropdownOpen(!isDropdownOpen)}
               className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
             >
               Category
