@@ -5,6 +5,7 @@ import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
+import EditProductPage from "./pages/EditProductPage"
 
 import Navbar from "./components/Navbar";
 import DeliveryNote from "./components/Note";
@@ -77,6 +78,7 @@ function App() {
                         <Route path="/legal" element={<LegalTermsPage />} />
                         <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/categories" element={<AllCategoriesPage />} />
+                        <Route path="/product/edit/:id" element={user?.role === "admin" ? <EditProductPage/> : <Navigate to="/login" />} />
                     </Routes>
                 </div>
 

@@ -58,6 +58,7 @@ const CreateProductForm = () => {
 			};
 			reader.readAsDataURL(file); // Convert to base64
 		}
+		 console.log(newProduct.image,newProduct.images);
 	};
 
 	const addNewImageField = () => {

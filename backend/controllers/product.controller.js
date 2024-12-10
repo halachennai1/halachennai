@@ -222,3 +222,111 @@ export const getSearchProducts = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+
+// export const editProduct = async (req, res) => {
+//     try {
+//         const { name, description, price, newImage, newImages, category } = req.body;
+
+//         let mainImageUpload = null;
+//         let additionalImagesUploads = [];
+
+//         // Upload the main image if provided
+//         if (image) {
+//             mainImageUpload = await cloudinary.uploader.upload(image, { folder: "products" });
+//         }
+
+//         // Upload the additional images if provided
+//         if (images && Array.isArray(images)) {
+//             additionalImagesUploads = await Promise.all(
+//                 images.map((img) =>
+//                     cloudinary.uploader.upload(img, { folder: "products" })
+//                 )
+//             );
+//         }
+
+//         // Create the product in the database
+//         const product = await Product.create({
+//             name,
+//             description,
+//             price,
+//             image: mainImageUpload?.secure_url || "", // Main image URL
+//             images: additionalImagesUploads.map((upload) => upload.secure_url), // Array of uploaded image URLs
+//             category,
+//         });
+
+//         res.status(201).json(product);
+//     } catch (error) {
+//         console.log("Error in createProduct controller", error.message);
+//         res.status(500).json({ message: "Server error", error: error.message });
+//     }
+// };
+
+export const editProduct = async (req, res) => {
+    try {
+        const { id } = req.params; // Product ID from the request parameters
+        const { name, description, price, newImage, newImages=[], deleteImages=[], category } = req.body;
+		console.log(name, description, price, newImage, newImages, deleteImages, category);
+
+        // Find the existing product
+        const product = await Product.findById(id);
+
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        let mainImageUpload = null;
+        let additionalImages = product.images || []; // Start with existing additional images
+		// Filter out images listed in deleteImages
+        additionalImages = additionalImages.filter(
+            (img) => !deleteImages.includes(img)
+        );
+
+		// Delete images listed in deleteImages from Cloudinary
+        await Promise.all(
+            deleteImages.map((img) => {
+                const publicId = img.split("/").pop().split(".")[0];
+                return cloudinary.uploader.destroy(`products/${publicId}`);
+            })
+        );
+
+        // Upload and replace the main image if a new one is provided
+        if (newImage) {
+            // Delete the old main image from Cloudinary
+            if (product.image) {
+                const publicId = product.image.split("/").pop().split(".")[0];
+                await cloudinary.uploader.destroy(`products/${publicId}`);
+            }
+
+            // Upload the new main image
+            mainImageUpload = await cloudinary.uploader.upload(newImage, { folder: "products" });
+        }
+
+        // Upload new additional images to Cloudinary
+        const newImagesUploads = await Promise.all(
+            newImages.map((img) =>
+                cloudinary.uploader.upload(img, { folder: "products" })
+            )
+        );
+
+        // Append new image URLs to additionalImages
+        additionalImages = [
+            ...additionalImages,
+            ...newImagesUploads.map((upload) => upload.secure_url),
+        ];
+
+        // Update the product in the database
+        product.name = name || product.name;
+        product.description = description || product.description;
+        product.price = price || product.price;
+        product.category = category || product.category;
+        product.image = mainImageUpload?.secure_url || product.image; // Replace main image URL if new one is uploaded
+        product.images = additionalImages;
+
+        await product.save();
+
+        res.status(200).json({ message: "Product updated successfully", product });
+    } catch (error) {
+        console.log("Error in editProduct controller", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+};

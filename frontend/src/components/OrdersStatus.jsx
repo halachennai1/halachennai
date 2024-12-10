@@ -211,7 +211,7 @@ const OrdersStatus = () => {
                             <div>
                                 <p><strong>Name:</strong> {product.product.name}</p>
                                 <p><strong>Size:</strong> {product.size}</p>
-                                <p><strong>Color:</strong> {product.color}</p>
+                                {/* <p><strong>Color:</strong> {product.color}</p> */}
                                 
                                 {/* Conditionally display customization if it's not an empty string */}
                                 {product.customization && product.customization !== "" ? (

@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
     const { addToCart } = useCartStore();
     const [showModal, setShowModal] = useState(false);
     const [selectedSize, setSelectedSize] = useState("");
-    const [selectedColor, setSelectedColor] = useState("");
+    // const [selectedColor, setSelectedColor] = useState("");
 	const [customization, setCustomization] = useState("");
     const [selectedImage, setSelectedImage] = useState(product.image);
     const allImages = [product.image, ...(product.images || [])];
@@ -35,7 +35,9 @@ const ProductCard = ({ product }) => {
             toast.error("Please login to add products to cart", { id: "login" });
             return;
         }
-        if (!selectedSize || !selectedColor) {
+        // setSelectedColor("Red");
+        // console.log(selectedColor);
+        if (!selectedSize ) {
             toast.error("Please select a size and color", { id: "select-options" });
             return;
         }
@@ -44,7 +46,7 @@ const ProductCard = ({ product }) => {
         addToCart({
             ...product,
             size: selectedSize,
-            color: selectedColor,
+            color: "Red",
             customization: customization || "" // Include customization if provided, otherwise send an empty string
         });
         
@@ -103,7 +105,7 @@ const ProductCard = ({ product }) => {
                                             <InnerImageZoom
                                                 src={selectedImage}
                                                 zoomSrc={selectedImage}
-                                                zoomType="click"    
+                                                zoomType="click"
                                                 zoomScale={1}
                                                 className="rounded-lg mb-4"
                                                 alt={product.name}
@@ -153,7 +155,7 @@ const ProductCard = ({ product }) => {
                                 </div>
 
                                 {/* Color Selection */}
-                                <div className="mb-4">
+                                {/* <div className="mb-4">
                                     <h4 className="text-black font-semibold mb-2">Select Color:</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {["Red", "Blue", "Green", "Black", "White"].map((color) => (
@@ -170,18 +172,20 @@ const ProductCard = ({ product }) => {
                                             </button>
                                         ))}
                                     </div>
-                                </div>
+                                </div> */}
 
                                 {/* Customization Text Field */}
                                 <div className="mb-4">
-                                    <h4 className="text-black font-semibold mb-2">Customization:</h4>
+                                    <h3 className="text-black font-semibold mb-2">Customization</h3>
+                                    <h4 className="text-black font-semibold mb-2">Enter Your Name & Number:</h4>
                                     <input
                                         type="text"
                                         className="text-black w-full px-4 py-2 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500"
                                         placeholder="Enter customization details (e.g., initials, text)"
                                         value={customization}
-                                        onChange ={(e) => setCustomization(e.target.value)}
+                                        onChange={(e) => setCustomization(e.target.value)}
                                     />
+                                    <p className="text-black font-semibold mb-2">Note*: max 12 letters , max 2 numbers (Ex: RONALDO 7)</p>
                                 </div>
 
                                 {/* Add to Cart Button */}

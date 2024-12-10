@@ -67,9 +67,9 @@ const CartItem = ({ item }) => {
 						<p>
 							<span className='font-semibold text-gray-400'>Size:</span> {item.size || 'N/A'}
 						</p>
-						<p>
+						{/* <p>
 							<span className='font-semibold text-gray-400'>Color:</span> {item.color || 'N/A'}
-						</p>
+						</p> */}
 						<p>
 							<span className='font-semibold text-gray-400'>Customization:</span> {item.customization || 'None'}
 						</p>

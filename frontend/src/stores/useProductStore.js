@@ -35,7 +35,7 @@ export const useProductStore = create((set) => ({
 		set({ loading: true });
 		try {
 			const response = await axios.get(`/products/${productId}`);
-			console.log("store:",response.data);
+			console.log("fetch product store:",response.data);
 			set({ product: response.data, loading: false });
 		} catch (error) {
 			set({ error: "Failed to fetch product details", loading: false });
@@ -101,4 +101,28 @@ export const useProductStore = create((set) => ({
 			toast.error(error.response.data.error || "Failed to fetch products");
 		}
 	}, 
+	editProduct: async (id, updatedData) => {
+		set({ loading: true }); // Set loading state to true
+		try {
+		  // Make a PATCH request to update the product
+		  console.log("use store",updatedData);
+		  const res = await axios.put(`/products/edit/${id}`, updatedData);
+	  
+		  // Update the local products list in the store
+		  set((prevState) => ({
+			products: prevState.products.map((product) =>
+			  product._id === id ? res.data.product : product // Replace the updated product
+			),
+			loading: false, // Set loading state to false
+		  }));
+	  
+		  toast.success("Product updated successfully!");
+		} catch (error) {
+		  // Handle error and display a toast message
+		  const errorMessage = error.response?.data?.message || "Something went wrong!";
+		  toast.error(errorMessage);
+		  set({ loading: false }); // Set loading state to false
+		}
+	  },
+	  
 }));

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Trash, Star } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
+import { Link } from "react-router-dom";
 
 const ProductsList = () => {
     const { deleteProduct, toggleFeaturedProduct, products } = useProductStore();
@@ -54,6 +55,7 @@ const ProductsList = () => {
                     <tbody className="bg-gray-800 divide-y divide-gray-700">
                         {products?.map((product) => (
                             <tr key={product._id} className="hover:bg-gray-700">
+                                            
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="flex-shrink-0 h-10 w-10">
@@ -64,12 +66,17 @@ const ProductsList = () => {
                                             />
                                         </div>
                                         <div className="ml-4 max-w-[150px]">
-                                            <div
-                                                className="text-sm font-medium text-white truncate"
-                                                title={product.name} // Shows full name on hover
-                                            >
-                                                {product.name}
-                                            </div>
+                                        <Link
+    to={{
+        pathname: `/product/edit/${product._id}`,
+    }}
+    state={{ product }} // Passing the product object via state
+    className="text-sm font-medium text-white truncate hover:text-emerald-400 transition duration-300 ease-in-out"
+    title={product.name} // Shows full name on hover
+>
+    {product.name}
+</Link>
+
                                         </div>
                                     </div>
                                 </td>
