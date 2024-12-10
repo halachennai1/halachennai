@@ -32,6 +32,9 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/category",categoryRoutes);
 app.use("/api/order", orderRoutes);
+app.get('/ping', (req, res) => {
+	res.status(200).send('OK');
+});
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
