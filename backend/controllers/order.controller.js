@@ -3,10 +3,9 @@ import Product from "../models/product.model.js";
 
 export const addOrder = async (req, res) => {
     try {
-        console.log("ji");
         const user = req.user; // Assuming user info comes from middleware
         const { cartItems, sessionId } = user;
-        console.log(cartItems,req.body);
+        console.log(cartItems, req.body);
 
         if (!cartItems || cartItems.length === 0) {
             return res.status(400).json({ message: "Cart is empty" });
@@ -29,7 +28,6 @@ export const addOrder = async (req, res) => {
                     product: product._id,
                     quantity: item.quantity,
                     price: product.price,
-
                     customization: item.customization || "",
                     size: item.size || "M",
                     color: item.color || "Black",
@@ -42,20 +40,46 @@ export const addOrder = async (req, res) => {
             user: user._id,
             products,
             totalAmount,
-            address:req.body.address,
+            address: req.body.address,
             SessionId: sessionId || `session-${Date.now()}`,
         });
         console.log(Date.now());
 
         await newOrder.save();
 
+        // Add the new order ID to the user's orders array
+        user.orders.push(newOrder._id);
+
         // Optionally clear the user's cart
         user.cartItems = [];
+
+        // Save the updated user
         await user.save();
 
         res.status(201).json({ message: "Order created successfully", order: newOrder });
     } catch (error) {
         console.error("Error in addOrder controller:", error.message);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+};
+
+export const getUserOrders = async (req, res) => {
+    try {
+        const user = req.user; // Assuming user info comes from middleware
+
+        // Populate the orders array with full order details
+        await user.populate({
+            path: 'orders',
+            populate: {
+                path: 'products.product', // Populate products inside orders
+                model: 'Product',
+            },
+        });
+
+        // Respond with the populated orders
+        res.status(200).json({ orders: user.orders });
+    } catch (error) {
+        console.error("Error in getUserOrders controller:", error.message);
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
@@ -80,6 +104,8 @@ export const getAllOrders = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+
+
 
 
 export const updateOrderStatus = async (req, res) => {

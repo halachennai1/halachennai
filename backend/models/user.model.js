@@ -48,6 +48,12 @@ const userSchema = new mongoose.Schema(
 			enum: ["customer", "admin"],
 			default: "customer",
 		},
+		orders:[
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Order",
+			}
+		],
 	},
 	{
 		timestamps: true,

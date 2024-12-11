@@ -39,7 +39,23 @@ export const useOrderStore = create((set) => ({
     fetchAllOrders: async () => {
         set({ loading: true });
         try {
-            const response = await axios.get("/order");
+            const response = await axios.get("/order",{});
+            const orders = response.data.orders;
+            console.log("orders:",orders);
+            set({ orders, loading: false });
+            // Categorize orders
+            useOrderStore.getState().categorizeOrders(orders);
+            toast.success("Orders fetched successfully!");
+        } catch (error) {
+            set({ error: "Failed to fetch orders", loading: false });
+            toast.error(error.response?.data?.message || "Failed to fetch orders.");
+        }
+    },
+
+    fetchUserOrders: async () => {
+        set({ loading: true });
+        try {
+            const response = await axios.get("/order/user");
             const orders = response.data.orders;
             console.log("orders:",orders);
             set({ orders, loading: false });

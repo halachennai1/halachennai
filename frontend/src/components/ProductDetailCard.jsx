@@ -397,7 +397,13 @@ const ProductDetails = () => {
         <div className="max-w-4xl mx-auto p-6">
             <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
             <img src={product.image} alt={product.name} className="w-full h-80 object-cover rounded-lg mb-4" />
-            <p className="text-gray-700 text-lg mb-4">Price: ₹{product.price}</p>
+            <p className="text-gray-700 text-lg mb-4">
+  <span className="line-through text-red-500 mr-2">
+    ₹{(product.price * 1.1).toFixed(2)}
+  </span>
+  Price: ₹{product.price}
+</p>
+
 
             {/* Size Selection */}
             <div className="mb-4">

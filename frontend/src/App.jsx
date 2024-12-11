@@ -26,6 +26,7 @@ import BottomNav from "./components/BottomNav";
 import ScrollingBanner from "./components/ScrollingBanner";
 import ProfilePage from "./pages/ProfilePage";
 import AllCategoriesPage from "./pages/AllCategoriesPage";
+import axios from "./lib/axios";
 
 function App() {
     useEffect(() => {
@@ -33,7 +34,7 @@ function App() {
           setInterval(async () => {
             try {
               // Replace with your OnRender app's URL
-              await fetch('https://halachennai.onrender.com/ping');
+              await axios.get('/ping');
               console.log('Server pinged successfully');
             } catch (error) {
               console.error('Failed to ping the server', error);
