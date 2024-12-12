@@ -63,23 +63,69 @@
 // 	},
 // 	plugins: [],
 // };
+
+
+// /** @type {import('tailwindcss').Config} */
+// export default {
+// 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+// 	theme: {
+// 		extend: {
+// 			colors: {
+// 				gray: {
+// 					100: '#F5E6FF',
+// 					300: '#D1AFFF',
+// 					400: '#B57CFF',
+// 					500: '#9B52FF',
+// 					600: '#7A39E0',
+// 					700: '#5C2DB8',
+// 					800: '#422290',
+// 					900: '#2B1860',
+// 				},
+// 				emerald: {
+// 					300: '#FFF4E6',
+// 					400: '#FFEBCC',
+// 					500: '#FFE3B3',
+// 					600: '#FFD799',
+// 					700: '#FFC07F',
+// 					800: '#FFA566',
+// 					900: '#FF8A4D',
+// 				},
+// 				white: '#FFF9F0', // Slight beige tint for white
+// 				black: '#4B286D', // A dark violet for black
+// 			},
+// 		},
+// 	},
+// 	plugins: [],
+// };
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
 			colors: {
-				// primary: {
-				// 	100: '#a0d2eb', // Light Blue
-				// 	200: '#e5eaf5', // Soft Blue
-				// },
-				secondary: {
-					100: '#d0bdf4', // Light Purple
-					200: '#8458B3', // Deep Purple
-					300: '#8458B3', // Custom Purple
+				gray: {
+					100: '#F5F5F5', // Very light gray (almost white)
+					300: '#D6D6D6', // Light gray
+					400: '#A3A3A3', // Mid-gray
+					500: '#737373', // Dark gray
+					600: '#525252', // Deep gray
+					700: '#404040', // Charcoal
+					800: '#262626', // Near black
+					900: '#171717', // True black
 				},
-				white: '#FFFFFF', // Pure White
-				black: '#000000', // Pure Black
+				emerald: {
+					300: '#FFF4E6',
+					400: '#FFEBCC',
+					500: '#FFE3B3',
+					600: '#FFD799',
+					700: '#FFC07F',
+					800: '#FFA566',
+					900: '#FF8A4D',
+				},
+				white: '#FFF9F0', // Slight beige tint for white
+				primary: '#000000', // Pure black for accents or emphasis
 			},
 		},
 	},
