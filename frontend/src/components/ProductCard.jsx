@@ -254,43 +254,43 @@ const ProductCard = ({ product }) => {
                   </div>
                 )}
 
-                {/* Kid Size Selection */}
-                {product.kidSize && (
-                  <div className="mb-4">
-                    <h4 className="text-black font-semibold mb-2">Kid Size:</h4>
-                    <div className="grid grid-cols-4 gap-4">
-                      {[
-                        "16:3yrs",
-                        "18:5yrs",
-                        "20:7yrs",
-                        "22:8yrs",
-                        "24:9yrs",
-                        "26:10yrs",
-                        "28:11yrs",
-                        "30:12yrs",
-                        "32:13yrs",
-                        "34:14yrs",
-                      ].map((size) => (
-                        <button
-                          key={size}
-                          onClick={() =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              kidSizeval: size,
-                            }))
-                          }
-                          className={`w-full px-4 py-2 rounded-lg border ${
-                            formData.kidSizeval === size
-                              ? "bg-emerald-600 text-white"
-                              : "bg-gray-100 text-gray-700"
-                          } hover:bg-emerald-600 hover:text-white`}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
+{product.kidSize && (
+  <div className="mb-4">
+    <h4 className="text-black font-semibold mb-2">Kid Size:</h4>
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      {[
+        "16:3yrs",
+        "18:5yrs",
+        "20:7yrs",
+        "22:8yrs",
+        "24:9yrs",
+        "26:10yrs",
+        "28:11yrs",
+        "30:12yrs",
+        "32:13yrs",
+        "34:14yrs",
+      ].map((size) => (
+        <button
+          key={size}
+          onClick={() =>
+            setFormData((prev) => ({
+              ...prev,
+              kidSizeval: size,
+            }))
+          }
+          className={`w-full px-4 py-2 rounded-lg border text-center break-words ${
+            formData.kidSizeval === size
+              ? "bg-emerald-600 text-white"
+              : "bg-gray-100 text-gray-700"
+          } hover:bg-emerald-600 hover:text-white`}
+          style={{ wordWrap: "break-word" }}
+        >
+          {size}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
 
                 {/* Shoe Size Selection */}
                 {product.shoeSize && (

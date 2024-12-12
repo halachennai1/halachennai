@@ -6,8 +6,8 @@ import CarouselComponent from "../components/CarouselComponent";
 
 const categories = [
 	// { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
-	{ href: "/player version", name: "Player version", imageUrl: "/player version.jpg" },
-	{ href: "/fan version", name: "Fan version", imageUrl: "/fan version.jpg" },
+	{ href: "/player version", name: "Player version", imageUrl: "/player ver.webp" },
+	{ href: "/fan version", name: "Fan version", imageUrl: "/fan ver.webp" },
 	{ href: "/retros", name: "Retro", imageUrl: "/retro.webp" },
 	{ href: "/fc sets", name: "FC Set", imageUrl: "/fcset.webp" },
 	{ href: "/kids", name: "Kids", imageUrl: "/kids.webp" },
