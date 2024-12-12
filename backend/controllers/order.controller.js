@@ -44,6 +44,7 @@ export const addOrder = async (req, res) => {
             products,
             totalAmount,
             address: req.body.address,
+            phoneNumber: req.body.phoneNumber,
             SessionId: sessionId || `session-${Date.now()}`,
         });
         console.log(Date.now());

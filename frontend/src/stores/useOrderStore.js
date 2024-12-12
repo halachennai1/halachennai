@@ -15,11 +15,11 @@ export const useOrderStore = create((set) => ({
         try {
             console.log("orderdata",orderData);
             const response = await axios.post("/order", orderData);
+            toast.success("Order created successfully!");
             set((prevState) => ({
                 orders: [...prevState.orders, response.data],
                 loading: false,
             }));
-            toast.success("Order created successfully!");
         } catch (error) {
             set({ loading: false });
             toast.error(error.response?.data?.message || "Failed to create order.");

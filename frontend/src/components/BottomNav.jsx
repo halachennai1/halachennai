@@ -165,8 +165,10 @@
 
 // export default BottomNav;
 
-
-import React from "react";
+import {
+    UserPlus,
+  } from "lucide-react";
+import { useUserStore } from "../stores/useUserStore";
 import {
     HiHome,
     HiOutlineViewGrid,
@@ -178,6 +180,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const BottomNav = () => {
     const location = useLocation();
+    const { user} = useUserStore();
 
     const isActive = (path) => location.pathname === path;
 
@@ -222,6 +225,18 @@ const BottomNav = () => {
                 </Link>
 
                 {/* Profile */}
+                {!user?(<Link
+            to="/login"
+            className="flex flex-col items-center"
+          >
+            <UserPlus className={isActive("/login") ? "text-emerald-500" : "text-gray-600"} 
+            size={26} />
+            <span 
+            className={`text-xs ${isActive("/login") ? "text-emerald-500" : "text-gray-600"}`}>
+                        Sign in
+                    </span>
+            {/* Sign Up */}
+          </Link>):(
                 <Link to="/profile" className="flex flex-col items-center">
                     <HiOutlineUser
                         size={28}
@@ -231,6 +246,7 @@ const BottomNav = () => {
                         Profile
                     </span>
                 </Link>
+          )}
             </div>
         </div>
     );

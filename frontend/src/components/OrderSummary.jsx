@@ -14,7 +14,8 @@ const stripePromise = loadStripe(
 const OrderSummary = () => {
 	const { clearCart, total, subtotal, coupon, isCouponApplied, cart } = useCartStore();
 	const { createOrder } = useOrderStore();
-	const [address, setAddress] = useState("");
+	const [ address, setAddress] = useState("");
+	const [ phoneNumber, setPhoneNumber] = useState("");
 
 	const savings = subtotal - total;
 	const formattedSubtotal = subtotal.toFixed(2);
@@ -26,10 +27,15 @@ const OrderSummary = () => {
             alert("Please provide a valid shipping address before proceeding.");
             return;
         }
+		if (!phoneNumber.trim()) {
+            alert("Please provide a valid phone number before proceeding.");
+            return;
+        }
 		try{
 			const data={
 				cartItems:cart,
-				address:address
+				address:address,
+				phoneNumber:phoneNumber,
 			};
 			await createOrder(data);
 		}
@@ -108,6 +114,18 @@ const OrderSummary = () => {
                         placeholder="Enter your shipping address"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
+                        className="mt-1 w-full rounded-md border-gray-600 bg-gray-700 p-2 text-sm text-white focus:ring-emerald-500"
+                    />
+                </div>
+				<div>
+                    <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-300">
+                        Phone Number
+                    </label>
+                    <input
+                        id="address"
+                        placeholder="Enter your phone number"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                         className="mt-1 w-full rounded-md border-gray-600 bg-gray-700 p-2 text-sm text-white focus:ring-emerald-500"
                     />
                 </div>

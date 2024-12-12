@@ -60,6 +60,10 @@ const orderSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		phoneNumber:{
+			type: String,
+			required: true,
+		},
 		SessionId: {
 			type: String,
 			unique: true,
