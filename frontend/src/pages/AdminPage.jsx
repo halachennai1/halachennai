@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 
 import AnalyticsTab from "../components/AnalyticsTab";
 import CreateProductForm from "../components/CreateProductForm";
-import CreateCategoryForm from "../components/CreateCategoryForm";
+// import CreateCategoryForm from "../components/CreateCategoryForm";
 import ProductsList from "../components/ProductsList";
 import OrdersStatus from "../components/OrdersStatus";
 import { useProductStore } from "../stores/useProductStore";
 
 const tabs = [
-	{ id: "createCategory", label: "Create Category", icon: FolderPlus },
+	// { id: "createCategory", label: "Create Category", icon: FolderPlus },
 	{ id: "create", label: "Create Product", icon: PlusCircle },
 	{ id: "products", label: "Products", icon: ShoppingBasket },
 	{ id: "analytics", label: "Analytics", icon: BarChart },
@@ -54,7 +54,7 @@ const AdminPage = () => {
 					))}
 				</div>
 
-				{activeTab === "createCategory" && <CreateCategoryForm />}
+				{/* {activeTab === "createCategory" && <CreateCategoryForm />} */}
 				{activeTab === "create" && <CreateProductForm />}
 				{activeTab === "products" && <ProductsList />}
 				{activeTab === "analytics" && <AnalyticsTab />}

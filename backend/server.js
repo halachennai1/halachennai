@@ -32,7 +32,7 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/category",categoryRoutes);
 app.use("/api/order", orderRoutes);
-app.get('/ping', (req, res) => {
+app.get('/api/ping', (req, res) => {
 	res.status(200).send('OK');
 });
 

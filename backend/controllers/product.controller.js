@@ -14,15 +14,15 @@ export const getAllProducts = async (req, res) => {
 
 export const getFeaturedProducts = async (req, res) => {
 	try {
-		let featuredProducts = await redis.get("featured_products");
-		if (featuredProducts) {
-			return res.json(JSON.parse(featuredProducts));
-		}
+		// let featuredProducts = await redis.get("featured_products");
+		// if (featuredProducts) {
+		// 	return res.json(JSON.parse(featuredProducts));
+		// }
 
 		// if not in redis, fetch from mongodb
 		// .lean() is gonna return a plain javascript object instead of a mongodb document
 		// which is good for performance
-		featuredProducts = await Product.find({ isFeatured: true }).lean();
+		let featuredProducts = await Product.find({ isFeatured: true }).lean();
 
 		if (!featuredProducts) {
 			return res.status(404).json({ message: "No featured products found" });
@@ -30,7 +30,7 @@ export const getFeaturedProducts = async (req, res) => {
 
 		// store in redis for future quick access
 
-		await redis.set("featured_products", JSON.stringify(featuredProducts));
+		// await redis.set("featured_products", JSON.stringify(featuredProducts));
 
 		res.json(featuredProducts);
 	} catch (error) {
@@ -41,7 +41,7 @@ export const getFeaturedProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
     try {
-        const { name, description, price, image, images, category } = req.body;
+        const { name, description, price, image, images, category, customizable, shoeSize, kidSize, regularSize } = req.body;
 
         let mainImageUpload = null;
         let additionalImagesUploads = [];
@@ -68,6 +68,10 @@ export const createProduct = async (req, res) => {
             image: mainImageUpload?.secure_url || "", // Main image URL
             images: additionalImagesUploads.map((upload) => upload.secure_url), // Array of uploaded image URLs
             category,
+			customizable,
+			shoeSize,
+			kidSize,
+			regularSize,
         });
 
         res.status(201).json(product);
@@ -264,8 +268,8 @@ export const getSearchProducts = async (req, res) => {
 export const editProduct = async (req, res) => {
     try {
         const { id } = req.params; // Product ID from the request parameters
-        const { name, description, price, newImage, newImages=[], deleteImages=[], category } = req.body;
-		console.log(name, description, price, newImage, newImages, deleteImages, category);
+        const { name, description, price, newImage, newImages=[], deleteImages=[], category, customizable, shoeSize, kidSize, regularSize } = req.body;
+		console.log(name, description, price, newImage, newImages, deleteImages, category, customizable, shoeSize, kidSize, regularSize);
 
         // Find the existing product
         const product = await Product.findById(id);
@@ -321,6 +325,11 @@ export const editProduct = async (req, res) => {
         product.category = category || product.category;
         product.image = mainImageUpload?.secure_url || product.image; // Replace main image URL if new one is uploaded
         product.images = additionalImages;
+		product.customizable = customizable ;
+		product.shoeSize = shoeSize ;
+		product.kidSize = kidSize ;
+		product.regularSize = regularSize ;
+		console.log("product",product);
 
         await product.save();
 

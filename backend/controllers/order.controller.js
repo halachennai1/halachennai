@@ -28,10 +28,13 @@ export const addOrder = async (req, res) => {
                     product: product._id,
                     quantity: item.quantity,
                     price: product.price,
-                    customization: item.customization || "",
-                    size: item.size || "M",
                     color: item.color || "Black",
+                    regularSizeval: item.regularSizeval || "M",
+                    kidSizeval: item.kidSizeval || "",
+                    shoeSizeval: item.shoeSizeval || "",
+                    customizableval: item.customizableval || "",
                 };
+                
             })
         );
 
@@ -95,7 +98,7 @@ export const getAllOrders = async (req, res) => {
         // Fetch orders with sorting and populate user & product details
         const orders = await Order.find(query)
             .populate("user", "name email") // Include user details
-            .populate("products.product", "name price image") // Include product details
+            .populate("products.product", "name price image customizable regularSize kidSize shoeSize") // Include product details
             .sort({ [sortBy]: order === "asc" ? 1 : -1 });
 
         res.status(200).json({ message: "Orders retrieved successfully", orders });

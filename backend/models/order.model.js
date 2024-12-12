@@ -24,13 +24,21 @@ const orderSchema = new mongoose.Schema(
 					required: true,
 					min: 0,
 				},
-				customization: {
+				customizableval: {
 					type: String,
 					default: "",
 				},
-				size: {
+				regularSizeval: {
 					type: String,
-					enum: ["S", "M", "L", "XL", "XXL"],
+					// enum: ["S", "M", "L", "XL", "XXL"],
+				},
+				shoeSizeval:{
+					type:String,
+					// enum: [],
+				},
+				kidSizeval:{
+					type:String,
+					// enum: [],
 				},
 				color: {
 					type:String,

@@ -15,8 +15,8 @@ const SearchPage = () => {
 	useEffect(() => {
 		fetchSearchProducts(productName);
         
-		console.log("Search:",products);
-	}, [fetchSearchProducts, productName,products]);
+		// console.log("Search:",products);
+	}, [fetchSearchProducts, productName]);
 
 	console.log("products:", products);
 	return (

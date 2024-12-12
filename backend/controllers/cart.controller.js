@@ -18,9 +18,11 @@ export const getCartProducts = async (req, res) => {
 				return {
 					...product.toJSON(),
                     quantity: cartItem.quantity,
-                    size: cartItem.size,
+                    regularSizeval: cartItem.regularSizeval,
+                    kidSizeval: cartItem.kidSizeval,
+                    shoeSizeval: cartItem.shoeSizeval,
                     color: cartItem.color,
-                    customization: cartItem.customization,
+                    customizableval: cartItem.customizableval,
 					_id: cartItem._id,
 					product: cartItem.product,
                 };
@@ -38,7 +40,7 @@ export const getCartProducts = async (req, res) => {
 
 export const addToCart = async (req, res) => {
     try {
-        const { product, size, color, customization } = req.body;
+        const { product, color, regularSizeval, kidSizeval, shoeSizeval, customizableval } = req.body;
 		console.log(req.body);
         const user = req.user;
 
@@ -47,9 +49,11 @@ export const addToCart = async (req, res) => {
         const existingItem = user.cartItems.find(
             (item) =>
                 item.product.toString() === product &&
-                item.size === size &&
                 item.color === color &&
-                item.customization === customization
+                item.regularSizeval === regularSizeval &&
+                item.kidSizeval === kidSizeval &&
+                item.shoeSizeval === shoeSizeval &&
+                item.customizableval === customizableval
         );
 
         if (existingItem) {
@@ -60,9 +64,11 @@ export const addToCart = async (req, res) => {
             user.cartItems.push({
 				_id: new mongoose.Types.ObjectId(),
                 product,
-                size,
                 color,
-                customization,
+                regularSizeval,
+                kidSizeval,
+                shoeSizeval,
+                customizableval,
                 quantity: 1,
             });
         }
@@ -117,7 +123,7 @@ export const updateQuantity = async (req, res) => {
         const user = req.user;
 
         // Find the item with matching details
-		user.cartItems.map((item)=>console.log("ci",item._id.toString()));
+		// user.cartItems.map((item)=>console.log("ci",item._id.toString()));
         const existingItem = user.cartItems.find(
             (item) =>
                 item._id.toString() === product 

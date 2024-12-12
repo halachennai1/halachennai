@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { fetchUserOrders, orders } = useOrderStore();
-  const {  user: userInfo } = useUserStore();
+  const { user: userInfo } = useUserStore();
   // const [orderHistory, setOrderHistory] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   // const [selectedOrderId, setSelectedOrderId] = useState(null);
@@ -26,7 +26,7 @@ const ProfilePage = () => {
     // checkAuth();
     setUser(userInfo);
     // setOrderHistory(orders);
-  }, [fetchUserOrders,userInfo]);
+  }, [fetchUserOrders, userInfo]);
   console.log(orders, userInfo, "hi");
 
   // useEffect(() => {
@@ -78,7 +78,6 @@ const ProfilePage = () => {
                 <tr className="text-emerald-400 border-b border-gray-700">
                   <th className="py-2 px-4">Order ID</th>
                   <th className="py-2 px-4">Product</th>
-                  <th className="py-2 px-4">Customer</th>
                   <th className="py-2 px-4">Date</th>
                   <th className="py-2 px-4">Status</th>
                   <th className="py-2 px-2">Address</th>
@@ -120,7 +119,6 @@ const ProfilePage = () => {
                         </tbody>
                       </table>
                     </td>
-                    <td className="py-2 px-4">{order.user?.name || "N/A"}</td>
                     <td className="py-2 px-4">
                       {new Date(order.createdAt).toLocaleDateString()}
                     </td>
@@ -161,9 +159,6 @@ const ProfilePage = () => {
               <strong>Order ID:</strong> {selectedOrder._id}
             </p>
             <p>
-              <strong>Customer Name:</strong> {selectedOrder.user.name}
-            </p>
-            <p>
               <strong>Date:</strong>{" "}
               {new Date(selectedOrder.createdAt).toLocaleDateString()}
             </p>
@@ -173,7 +168,7 @@ const ProfilePage = () => {
             <p>
               <strong>Status:</strong> {selectedOrder.status}
             </p>
-          
+
             {/* Scrollable products list */}
             <div className="mt-4 h-[50vh] overflow-y-auto">
               <h3 className="text-xl text-emerald-400">Products:</h3>
@@ -189,18 +184,42 @@ const ProfilePage = () => {
                       <p>
                         <strong>Name:</strong> {product.product.name}
                       </p>
-                      <p>
-                        <strong>Size:</strong> {product.size}
-                      </p>
-                      {/* <p><strong>Color:</strong> {product.color}</p> */}
-
-                      {/* Conditionally display customization if it's not an empty string */}
-                      {product.customization && product.customization !== "" ? (
+                      {/* Conditionally display Regular Size */}
+                      {product.product.regularSize && (
                         <p>
-                          <strong>Customization:</strong>{" "}
-                          {product.customization}
+                          <strong>Regular Size:</strong>{" "}
+                          {product.regularSizeval || "N/A"}
                         </p>
-                      ) : null}
+                      )}
+
+                      {/* Conditionally display Kid Size */}
+                      {product.product.kidSize && (
+                        <p>
+                          <strong>Kid Size:</strong>{" "}
+                          {product.kidSizeval || "N/A"}
+                        </p>
+                      )}
+
+                      {/* Conditionally display Shoe Size */}
+                      {product.product.shoeSize && (
+                        <p>
+                          <strong>Shoe Size:</strong>{" "}
+                          {product.shoeSizeval || "N/A"}
+                        </p>
+                      )}
+
+                      {/* Conditionally display Customization */}
+                      {product.product.customizable && (
+                        <>
+                          {product.customizableval &&
+                          product.customizableval !== "" ? (
+                            <p>
+                              <strong>Customization:</strong>{" "}
+                              {product.customizableval || "None"}
+                            </p>
+                          ) : null}
+                        </>
+                      )}
 
                       <p>
                         <strong>Quantity:</strong> {product.quantity}

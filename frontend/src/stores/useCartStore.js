@@ -58,101 +58,134 @@ export const useCartStore = create((set, get) => ({
 
     addToCart: async (product) => {
         try {
-            // Send size, color, and customization details in the payload
+            // Send all size and customization details in the payload
             const response = await axios.post("/cart", {
                 product: product._id,
-                size: product.size,
                 color: product.color,
-                customization: product.customization,
+                regularSizeval: product.regularSizeval,
+                kidSizeval: product.kidSizeval,
+                shoeSizeval: product.shoeSizeval,
+                customizableval: product.customizableval,
             });
+    
             toast.success("Product added to cart");
-			const updatedCartItems = response.data.cartItems;
+            const updatedCartItems = response.data.cartItems;
+    
             set((prevState) => {
-                // prevState.cart.map((item)=>console.log("testing:",item.product,product._id));
                 const existingItem = prevState.cart.find(
                     (item) =>
                         item.product === product._id &&
-                        item.size === product.size &&
                         item.color === product.color &&
-                        item.customization === product.customization
+                        item.regularSizeval === product.regularSizeval &&
+                        item.kidSizeval === product.kidSizeval &&
+                        item.shoeSizeval === product.shoeSizeval &&
+                        item.customizableval === product.customizableval
                 );
-
+    
                 const newCart = existingItem
                     ? prevState.cart.map((item) =>
                           item.product === product._id &&
-                          item.size === product.size &&
                           item.color === product.color &&
-                          item.customization === product.customization
+                          item.regularSizeval === product.regularSizeval &&
+                          item.kidSizeval === product.kidSizeval &&
+                          item.shoeSizeval === product.shoeSizeval &&
+                          item.customizableval === product.customizableval
                               ? { ...item, quantity: item.quantity + 1 }
                               : item
                       )
-                    : [...prevState.cart, { ...product,_id: updatedCartItems.find(
-						(item) =>
-							item.product === product._id &&
-							item.size === product.size &&
-							item.color === product.color &&
-							item.customization === product.customization
-					)._id, quantity: 1 }];
-
+                    : [
+                          ...prevState.cart,
+                          {
+                              ...product,
+                              _id: updatedCartItems.find(
+                                  (item) =>
+                                      item.product === product._id &&
+                                      item.color === product.color &&
+                                      item.regularSizeval === product.regularSizeval &&
+                                      item.kidSizeval === product.kidSizeval &&
+                                      item.shoeSizeval === product.shoeSizeval &&
+                                      item.customizableval === product.customizableval
+                              )._id,
+                              quantity: 1,
+                          },
+                      ];
+    
                 return { cart: newCart };
             });
-
+    
             get().calculateTotals();
         } catch (error) {
             toast.error(error.response?.data?.message || "An error occurred");
         }
     },
+    
 
-    removeFromCart: async ({ productId, size, color, customization }) => {
+    removeFromCart: async ({ productId, color, regularSizeval, kidSizeval, shoeSizeval, customizableval }) => {
         try {
-            await axios.delete("/cart", { data: { productId, size, color, customization } });
-
+            await axios.delete("/cart", { 
+                data: { 
+                    productId, 
+                    color, 
+                    regularSizeval, 
+                    kidSizeval, 
+                    shoeSizeval, 
+                    customizableval 
+                } 
+            });
+    
             set((prevState) => ({
                 cart: prevState.cart.filter(
                     (item) =>
                         item._id !== productId ||
-                        item.size !== size ||
                         item.color !== color ||
-                        item.customization !== customization
+                        item.regularSizeval !== regularSizeval ||
+                        item.kidSizeval !== kidSizeval ||
+                        item.shoeSizeval !== shoeSizeval ||
+                        item.customizableval !== customizableval
                 ),
             }));
-
+    
             get().calculateTotals();
         } catch (error) {
             toast.error("Failed to remove item from cart");
         }
     },
-
-    updateQuantity: async ({ productId, size, color, customization, quantity }) => {
+    
+    updateQuantity: async ({ productId, color, regularSizeval, kidSizeval, shoeSizeval, customizableval, quantity }) => {
         try {
             if (quantity === 0) {
-                get().removeFromCart({ productId, size, color, customization });
+                get().removeFromCart({ productId, color, regularSizeval, kidSizeval, shoeSizeval, customizableval });
                 return;
             }
-
+    
             await axios.put(`/cart/${productId}`, {
-                size,
                 color,
-                customization,
+                regularSizeval,
+                kidSizeval,
+                shoeSizeval,
+                customizableval,
                 quantity,
             });
-
+    
             set((prevState) => ({
                 cart: prevState.cart.map((item) =>
                     item._id === productId &&
-                    item.size === size &&
                     item.color === color &&
-                    item.customization === customization
+                    item.regularSizeval === regularSizeval &&
+                    item.kidSizeval === kidSizeval &&
+                    item.shoeSizeval === shoeSizeval &&
+                    item.customizableval === customizableval
                         ? { ...item, quantity }
                         : item
                 ),
             }));
-
+    
             get().calculateTotals();
         } catch (error) {
             toast.error("Failed to update item quantity");
         }
     },
+    
 
     calculateTotals: () => {
         const { cart, coupon } = get();

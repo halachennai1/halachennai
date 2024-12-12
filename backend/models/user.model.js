@@ -29,13 +29,21 @@ const userSchema = new mongoose.Schema(
 					type: mongoose.Schema.Types.ObjectId,
 					ref: "Product",
 				},
-				customization: {
+				customizableval: {
 					type: String,
 					default: "",
 				},
-				size: {
+				regularSizeval: {
 					type: String,
-					enum: ["S", "M", "L", "XL", "XXL"],
+					// enum: ["S", "M", "L", "XL", "XXL"],
+				},
+				shoeSizeval:{
+					type:String,
+					// enum: [],
+				},
+				kidSizeval:{
+					type:String,
+					// enum: [],
 				},
 				color: {
 					type:String,

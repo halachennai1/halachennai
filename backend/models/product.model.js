@@ -45,6 +45,22 @@ const productSchema = new mongoose.Schema(
 				type: String,
 			},
 		],
+		regularSize:{
+			type: Boolean,
+			default:false,
+		},
+		kidSize:{
+			type: Boolean,
+			default:false,
+		},
+		customizable:{
+			type: Boolean,
+			default:false,
+		},
+		shoeSize:{
+			type: Boolean,
+			default:false,
+		},
 	},
 	{ timestamps: true }
 );

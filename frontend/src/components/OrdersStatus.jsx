@@ -229,18 +229,43 @@ const OrdersStatus = () => {
                       <p>
                         <strong>Name:</strong> {product.product.name}
                       </p>
-                      <p>
-                        <strong>Size:</strong> {product.size}
-                      </p>
-                      {/* <p><strong>Color:</strong> {product.color}</p> */}
-
-                      {/* Conditionally display customization if it's not an empty string */}
-                      {product.customization && product.customization !== "" ? (
+                      {/* Conditionally display Regular Size */}
+                      {product.product.regularSize && (
                         <p>
-                          <strong>Customization:</strong>{" "}
-                          {product.customization}
+                          <strong>Regular Size:</strong>{" "}
+                          {product.regularSizeval || "N/A"}
                         </p>
-                      ) : null}
+                      )}
+
+                      {/* Conditionally display Kid Size */}
+                      {product.product.kidSize && (
+                        <p>
+                          <strong>Kid Size:</strong>{" "}
+                          {product.kidSizeval || "N/A"}
+                        </p>
+                      )}
+
+                      {/* Conditionally display Shoe Size */}
+                      {product.product.shoeSize && (
+                        <p>
+                          <strong>Shoe Size:</strong>{" "}
+                          {product.shoeSizeval || "N/A"}
+                        </p>
+                      )}
+
+                      {/* Conditionally display Customization */}
+                      {product.product.customizable && (
+                        <>
+                          {product.customizableval &&
+                          product.customizableval !== "" ? (
+                            <p>
+                              <strong>Customization:</strong>{" "}
+                              {product.customizableval || "None"}
+                            </p>
+                          ) : null}
+                        </>
+                      )}
+                      {/* <p><strong>Color:</strong> {product.color}</p> */}
 
                       <p>
                         <strong>Quantity:</strong> {product.quantity}
