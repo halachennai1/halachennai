@@ -1547,6 +1547,15 @@ const Navbar = () => {
           {/* User and Cart Links */}
           <div className="flex items-center space-x-4 mt-4 lg:mt-0">
             {user && (
+              <button
+              onClick={handleSearchToggle}
+              className="hidden lg:block text-white p-2 focus:outline-none"
+            >
+              <Search size={24} />
+            </button>
+            )}
+            {user && (
+          
               <Link
                 to="/cart"
                 className="relative group text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
@@ -1563,6 +1572,7 @@ const Navbar = () => {
                 )}
               </Link>
             )}
+            
             {isAdmin && (
               <Link
                 className="bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center"

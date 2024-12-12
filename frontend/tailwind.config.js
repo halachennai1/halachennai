@@ -125,7 +125,7 @@ export default {
 					900: '#FF8A4D',
 				},
 				white: '#FFF9F0', // Slight beige tint for white
-				primary: '#000000', // Pure black for accents or emphasis
+				black: '#000000', // Pure black for accents or emphasis
 			},
 		},
 	},
